@@ -51,18 +51,18 @@ namespace NHSE.Sprites
 
             if (pathSpriteRotation == 0 && tileRotation > 0) pathSpriteRotation = tileRotation;
 
-            Image baseSprite = (Image)Resources.ResourceManager.GetObject("Base");
+            Image? baseSprite = (Image?)Resources.ResourceManager.GetObject("Base");
 
             if (tileName.Substring(0, 4) == "Fall")
-                baseSprite = (Image)Resources.ResourceManager.GetObject(tileName);
+                baseSprite = (Image?)Resources.ResourceManager.GetObject(tileName);
 
-            if (baseSprite == null) baseSprite = (Image)Resources.ResourceManager.GetObject("unknown");
+            if (baseSprite == null) baseSprite = (Image?)Resources.ResourceManager.GetObject("unknown");
 
             if (baseSprite == null) throw new KeyNotFoundException("Resources not found in ResourceManager");
 
             // baseSprite rotation 1 = 90degree left
 
-            if (tileRotation > 0)
+            if (tileRotation > 0 && tileName.StartsWith("Fall"))
             {
                 baseSprite.RotateFlip((RotateFlipType)((4 - tileRotation) % 4));
             }
@@ -73,7 +73,7 @@ namespace NHSE.Sprites
             return baseSprite;
         }
 
-        private static Image GetPathSprite(string spriteID = "", ushort rotation = 0)
+        private static Image? GetPathSprite(string spriteID = "", ushort rotation = 0)
         {
             if (spriteID != "")
             {
@@ -89,13 +89,13 @@ namespace NHSE.Sprites
 
                 if (rotation < 0 || rotation > 3) rotation = 0;
 
-                Image tileSprite = (Image)Resources.ResourceManager.GetObject(spritePattern + spriteMod);
+                Image? tileSprite = (Image?)Resources.ResourceManager.GetObject(spritePattern + spriteMod);
 
-                if (tileSprite == null) tileSprite = (Image)Resources.ResourceManager.GetObject(spritePattern);
+                if (tileSprite == null) tileSprite = (Image?)Resources.ResourceManager.GetObject(spritePattern);
 
                 if (tileSprite == null)
                 {
-                    tileSprite = (Image)Resources.ResourceManager.GetObject("unknown");
+                    tileSprite = (Image?)Resources.ResourceManager.GetObject("unknown");
                 }
                 else
                 {
@@ -106,15 +106,15 @@ namespace NHSE.Sprites
             }
             else
             {
-                Image tileSprite = (Image)Resources.ResourceManager.GetObject("unknown");
+                Image? tileSprite = (Image?)Resources.ResourceManager.GetObject("unknown");
 
                 return tileSprite;
             }
         }
 
-        public static Image ApplySpriteMaterial(Image sprite, string material)
+        public static Image? ApplySpriteMaterial(Image? sprite, string material)
         {
-            Image materialImage = (Image)Resources.ResourceManager.GetObject(material);
+            Image? materialImage = (Image?)Resources.ResourceManager.GetObject(material);
 
             if (materialImage == null) return sprite;
 
@@ -169,8 +169,9 @@ namespace NHSE.Sprites
         }
 
         // https://stackoverflow.com/questions/38566828/overlap-one-image-as-transparent-on-another-in-c-sharp
-        public static Image OverlayImages(Image background, Image foreground)
+        public static Image OverlayImages(Image? background, Image? foreground)
         {
+            if (background == null || foreground == null) throw new ArgumentNullException("background image or foreground image null");
             if (background.Height != foreground.Height || background.Width != foreground.Width) throw new ArgumentException("Both images need to be the same size");
             Bitmap resultImage = new Bitmap(background);
             Graphics tempCompose = Graphics.FromImage(resultImage);
