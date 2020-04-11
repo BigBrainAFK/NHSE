@@ -121,8 +121,17 @@
   <data name="0A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiles\0A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="0B" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiles\0B.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="1A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiles\1A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1B" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiles\1B.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1C" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tiles\1C.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="2A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tiles\2A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
