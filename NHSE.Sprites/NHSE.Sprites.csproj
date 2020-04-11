@@ -6,6 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tiles\**" />
+    <Compile Remove="Villagers\**" />
+    <EmbeddedResource Remove="Tiles\**" />
+    <EmbeddedResource Remove="Villagers\**" />
+    <None Remove="Tiles\**" />
+    <None Remove="Villagers\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Resources\Villagers\" />
   </ItemGroup>
