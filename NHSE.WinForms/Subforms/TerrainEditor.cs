@@ -131,7 +131,7 @@ namespace NHSE.WinForms
             PG_Tile.SelectedObject = pgt;
         }
 
-        private void SetTile(TerrainTile tile, Control obj)
+        private void SetTile(TerrainTile tile, Button obj)
         {
             var pgt = (TerrainTile)PG_Tile.SelectedObject;
             tile.CopyFrom(pgt);
@@ -139,7 +139,7 @@ namespace NHSE.WinForms
             ReloadMap();
         }
 
-        private void DeleteTile(TerrainTile tile, Control obj)
+        private void DeleteTile(TerrainTile tile, Button obj)
         {
             tile.Clear();
             RefreshTile(obj, tile);
@@ -190,10 +190,12 @@ namespace NHSE.WinForms
             return Terrain.GetTile(x, y);
         }
 
-        private static void RefreshTile(Control button, TerrainTile tile)
+        private static void RefreshTile(Button button, TerrainTile tile)
         {
             button.Text = TerrainSprite.GetTileName(tile);
-            button.BackColor = TerrainSprite.GetTileColor(tile);
+            //button.BackColor = TerrainSprite.GetTileColor(tile);
+            button.BackgroundImage = TerrainSprite.GetTileImage(tile);
+            button.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void B_Up_Click(object sender, EventArgs e) => CB_Acre.SelectedIndex -= MapGrid.AcreWidth;
